@@ -9,7 +9,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 // import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.RunDrivebaseCommand;
 import frc.robot.commands.RunManipulatorCommand;
 import frc.robot.subsystems.Drivebase;
@@ -28,11 +27,7 @@ public class RobotContainer {
   public final Drivebase drivebase = systems.getDrivebase();
   public static final CommandXboxController driver = new CommandXboxController(0);
   public static final CommandXboxController operator = new CommandXboxController(1);
-
-  // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController m_driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
-
+  
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
