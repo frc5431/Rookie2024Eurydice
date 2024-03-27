@@ -4,44 +4,37 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Manipulator extends SubsystemBase {
-  /** Creates a new ExampleSubsystem. */
-  public Manipulator() {}
+  WPI_TalonSRX leftMotor;
+  WPI_TalonSRX rightMotor;
+  public Manipulator(WPI_TalonSRX leftMotor, WPI_TalonSRX rightMotor) {
+    this.leftMotor = leftMotor;
+    this.rightMotor = rightMotor;
 
-  /**
-   * Example command factory method.
-   *
-   * @return a command
-   */
-  public Command exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(
-        () -> {
-          /* one-time action goes here */
-        });
+    
   }
 
-  /**
-   * An example method querying a boolean state of the subsystem (for example, a digital sensor).
-   *
-   * @return value of some boolean subsystem state, such as a digital sensor.
-   */
-  public boolean exampleCondition() {
-    // Query some boolean state, such as a digital sensor.
-    return false;
+  public void run (ManipulatorModes mode) {
+    if (mode == ManipulatorModes.INTAKE) {
+      runButActually(Constants.ManipulatorConstants.intakeSpeed);
+    }
+    else if (mode == ManipulatorModes.SHOOT) {
+      runButActually(Constants.ManipulatorConstants.shooterSpeed);
+    }
   }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+  
+  public void runButActually (double speed) {
+    leftMotor.set(speed);
   }
-
-  @Override
-  public void simulationPeriodic() {
-    // This method will be called once per scheduler run during simulation
+  
+  
+  public enum ManipulatorModes {
+    INTAKE, 
+    SHOOT
   }
 }

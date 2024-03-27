@@ -64,7 +64,7 @@
         },
         {
             "groupId": "com.ctre.phoenix6.sim",
-            "artifactId": "simTalonFX",
+            "artifactId": "simWPI_TalonSRX",
             "version": "24.2.0",
             "isJar": false,
             "skipInvalidPlatforms": true,
@@ -116,7 +116,7 @@
         },
         {
             "groupId": "com.ctre.phoenix6.sim",
-            "artifactId": "simProTalonFX",
+            "artifactId": "simProWPI_TalonSRX",
             "version": "24.2.0",
             "isJar": false,
             "skipInvalidPlatforms": true,
@@ -232,9 +232,9 @@
         },
         {
             "groupId": "com.ctre.phoenix6.sim",
-            "artifactId": "simTalonFX",
+            "artifactId": "simWPI_TalonSRX",
             "version": "24.2.0",
-            "libName": "CTRE_SimTalonFX",
+            "libName": "CTRE_SimWPI_TalonSRX",
             "headerClassifier": "headers",
             "sharedLibrary": true,
             "skipInvalidPlatforms": true,
@@ -292,9 +292,9 @@
         },
         {
             "groupId": "com.ctre.phoenix6.sim",
-            "artifactId": "simProTalonFX",
+            "artifactId": "simProWPI_TalonSRX",
             "version": "24.2.0",
-            "libName": "CTRE_SimProTalonFX",
+            "libName": "CTRE_SimProWPI_TalonSRX",
             "headerClassifier": "headers",
             "sharedLibrary": true,
             "skipInvalidPlatforms": true,
