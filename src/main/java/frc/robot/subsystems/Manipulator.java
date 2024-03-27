@@ -16,7 +16,7 @@ public class Manipulator extends SubsystemBase {
     this.leftMotor = leftMotor;
     this.rightMotor = rightMotor;
 
-    
+    this.rightMotor.follow(this.leftMotor);
   }
 
   public void run (ManipulatorModes mode) {

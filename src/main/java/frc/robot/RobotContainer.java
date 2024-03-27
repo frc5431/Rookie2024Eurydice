@@ -10,7 +10,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.RunDrivebaseCommand;
 import frc.robot.commands.RunManipulatorCommand;
+import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Manipulator;
 import frc.robot.subsystems.Manipulator.ManipulatorModes;
 
@@ -23,6 +25,7 @@ import frc.robot.subsystems.Manipulator.ManipulatorModes;
 public class RobotContainer {
   private final Systems systems = new Systems();
   private final Manipulator manipulator = systems.getManipulator();
+  public final Drivebase drivebase = systems.getDrivebase();
   public static final CommandXboxController driver = new CommandXboxController(0);
   public static final CommandXboxController operator = new CommandXboxController(1);
 
@@ -46,8 +49,14 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
+    drivebase.setDefaultCommand(
+      new RunDrivebaseCommand(drivebase, false, driver.getRawAxis(1)),
+      new RunDrivebaseCommand(drivebase, true, driver.getRawAxis(4))
+    );
+
     operator.a().onTrue(new RunManipulatorCommand(manipulator, ManipulatorModes.INTAKE));
     operator.b().onTrue(new RunManipulatorCommand(manipulator, ManipulatorModes.SHOOT));
+    // driver.onTrue(new RunDrivebaseCommand(drivebase, false, getRightX));
   }
 
   /**

@@ -14,4 +14,12 @@ public final class Constants {
     public static double intakeSpeed = -1; // temp
     public static double shooterSpeed = -1; // temp
   }
+
+  public static class DrivebaseConstants {
+    public static int leftBackID = 2; // temp
+    public static int leftFrontID = 3; // temp
+    public static int rightBackID = 4; // temp
+    public static int rightfrontID = 5; // temp
+    
+  }
 }
