@@ -50,8 +50,7 @@ public class RobotContainer {
    */
   private void configureBindings() {
     drivebase.setDefaultCommand(
-      new RunDrivebaseCommand(drivebase, false, driver.getRawAxis(1)),
-      new RunDrivebaseCommand(drivebase, true, driver.getRawAxis(4))
+      new RunDrivebaseCommand(drivebase, driver.getLeftY(), driver.getRightY())
     );
 
     operator.a().onTrue(new RunManipulatorCommand(manipulator, ManipulatorModes.INTAKE));
