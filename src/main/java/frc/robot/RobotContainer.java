@@ -6,14 +6,15 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
+import edu.wpi.first.wpilibj2.command.RunCommand;
 // import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.RunDrivebaseCommand;
 import frc.robot.commands.RunManipulatorCommand;
 import frc.robot.subsystems.Drivebase;
 import frc.robot.subsystems.Manipulator;
 import frc.robot.subsystems.Manipulator.ManipulatorModes;
+import frc.team5431.titan.core.joysticks.CommandXboxController;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -30,6 +31,7 @@ public class RobotContainer {
   
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    driver.setDeadzone(.1);
     // Configure the trigger bindings
     configureBindings();
   }
@@ -45,11 +47,14 @@ public class RobotContainer {
    */
   private void configureBindings() {
     drivebase.setDefaultCommand(
-      new RunDrivebaseCommand(drivebase, driver.getLeftY(), driver.getRightY())
+      new RunDrivebaseCommand(drivebase, 
+        () -> driver.getLeftY(), () -> driver.getRightY()
+      )
+      // new RunDrivebaseCommand(drivebase, driver.getLeftY(), driver.getRightY())
     );
 
-    operator.a().onTrue(new RunManipulatorCommand(manipulator, ManipulatorModes.INTAKE));
-    operator.b().onTrue(new RunManipulatorCommand(manipulator, ManipulatorModes.SHOOT));
+    operator.a().whileTrue(new RunManipulatorCommand(manipulator, ManipulatorModes.INTAKE));
+    operator.b().whileTrue(new RunManipulatorCommand(manipulator, ManipulatorModes.SHOOT));
     // driver.onTrue(new RunDrivebaseCommand(drivebase, false, getRightX));
   }
 

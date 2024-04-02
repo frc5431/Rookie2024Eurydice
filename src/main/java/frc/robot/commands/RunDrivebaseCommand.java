@@ -1,24 +1,26 @@
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Drivebase;
 
 public class RunDrivebaseCommand extends Command {
     Drivebase drivebase;
-    double leftSpeed;
-    double rightSpeed;
+    DoubleSupplier leftSpeed;
+    DoubleSupplier rightSpeed;
 
-    public RunDrivebaseCommand(Drivebase drivebase, double rightSpeed, double leftSpeed) {
+    public RunDrivebaseCommand(Drivebase drivebase, DoubleSupplier rightSpeed, DoubleSupplier leftSpeed) {
+        this.drivebase = drivebase;
         this.leftSpeed = leftSpeed;
         this.rightSpeed = rightSpeed;
 
     }
     
     @Override
-    public void initialize() {
-        drivebase.leftSide(leftSpeed);
-        
-        drivebase.rightSide(rightSpeed);  
+    public void execute() {
+        drivebase.leftSide(leftSpeed.getAsDouble());
+        drivebase.rightSide(rightSpeed.getAsDouble());  
     }
 
     @Override
