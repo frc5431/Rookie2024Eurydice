@@ -15,7 +15,7 @@ public class Drivebase extends SubsystemBase {
         this.leftBack = leftBack;
         this.leftFront = leftFront;
         this.rightBack = rightBack;
-        this.rightFront = rightBack;
+        this.rightFront = rightFront;
 
         leftFront.follow(leftBack);
         leftFront.setInverted(true);
