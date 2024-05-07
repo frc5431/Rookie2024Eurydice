@@ -48,7 +48,7 @@ public class RobotContainer {
   private void configureBindings() {
     drivebase.setDefaultCommand(
       new RunDrivebaseCommand(drivebase, 
-        () -> driver.getLeftY(), () -> driver.getRightY()
+        () -> driver.getLeftY(), () -> -driver.getRightY()
       )
       // new RunDrivebaseCommand(drivebase, driver.getLeftY(), driver.getRightY())
     );

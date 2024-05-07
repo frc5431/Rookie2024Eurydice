@@ -15,12 +15,12 @@ public class Systems {
 
     public WPI_TalonSRX drivebaseLeftFront = new WPI_TalonSRX(Constants.DrivebaseConstants.leftFrontID);
     public WPI_TalonSRX drivebaseLeftBack = new WPI_TalonSRX(Constants.DrivebaseConstants.leftBackID);
-    public WPI_TalonSRX drivebaserightFront = new WPI_TalonSRX(Constants.DrivebaseConstants.rightfrontID);
-    public WPI_TalonSRX drivebaserightBack = new WPI_TalonSRX(Constants.DrivebaseConstants.rightBackID);
+    public WPI_TalonSRX drivebaseRightFront = new WPI_TalonSRX(Constants.DrivebaseConstants.rightFrontID);
+    public WPI_TalonSRX drivebaseRightBack = new WPI_TalonSRX(Constants.DrivebaseConstants.rightBackID);
     
     public Systems () {
         manipulator = new Manipulator(manipulatorLeft, manipulatorRight);
-        drivebase = new Drivebase(drivebaseLeftBack, drivebaseLeftFront, drivebaserightFront, drivebaserightBack);
+        drivebase = new Drivebase(drivebaseLeftBack, drivebaseLeftFront, drivebaseRightFront, drivebaseRightBack);
         instance = this;
     }
 

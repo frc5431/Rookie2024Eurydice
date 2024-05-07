@@ -18,8 +18,10 @@ public class Drivebase extends SubsystemBase {
         this.rightFront = rightFront;
 
         leftFront.follow(leftBack);
-        leftFront.setInverted(true);
-        leftBack.setInverted(true);
+        leftFront.setInverted(false);
+        leftBack.setInverted(false);
+        rightFront.setInverted(false);
+        rightBack.setInverted(false);
         rightFront.follow(rightBack);
     }
 
@@ -32,10 +34,10 @@ public class Drivebase extends SubsystemBase {
     }
 
     public void leftSide(double speed) {
-        leftBack.set(speed);
+        leftBack.set(speed * .5);
     }
 
     public void rightSide(double speed) {
-        rightBack.set(speed);
+        rightBack.set(speed * .5);
     }
 }

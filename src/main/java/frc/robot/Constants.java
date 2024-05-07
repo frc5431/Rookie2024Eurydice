@@ -16,6 +16,6 @@ public final class Constants {
     public static final int leftBackID = 1;
     public static final int leftFrontID = 2;
     public static final int rightBackID = 4;
-    public static final int rightfrontID = 3;
+    public static final int rightFrontID = 3;
   }
 }
