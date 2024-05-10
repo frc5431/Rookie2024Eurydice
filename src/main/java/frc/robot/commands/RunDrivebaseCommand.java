@@ -8,23 +8,22 @@ import frc.robot.subsystems.Drivebase;
 
 public class RunDrivebaseCommand extends Command {
     Drivebase drivebase;
-    DoubleSupplier leftSpeed;
-    DoubleSupplier rightSpeed;
+    DoubleSupplier move;
+    DoubleSupplier turn;
 
-    public RunDrivebaseCommand(Drivebase drivebase, DoubleSupplier rightSpeed, DoubleSupplier leftSpeed) {
+    public RunDrivebaseCommand(Drivebase drivebase, DoubleSupplier move, DoubleSupplier turn) {
         this.drivebase = drivebase;
-        this.leftSpeed = leftSpeed;
-        this.rightSpeed = rightSpeed;
+        this.move = move;
+        this.turn = turn;
+
         addRequirements(drivebase);
 
     }
     
     @Override
     public void execute() {
-        drivebase.leftSide(leftSpeed.getAsDouble());
-        SmartDashboard.putNumber("left", leftSpeed.getAsDouble());
-        SmartDashboard.putNumber("right", rightSpeed.getAsDouble());
-        drivebase.rightSide(rightSpeed.getAsDouble());  
+        drivebase.leftSide(move.getAsDouble() + turn.getAsDouble());
+        drivebase.rightSide(move.getAsDouble() - turn.getAsDouble());  
     }
 
     @Override
